@@ -3,42 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <title>YsT</title>
 </head>
 <body>
-        <header>
-            <h1> Ystenia</h1>
-            <img src="../img/Y.png" alt="logo">
-            <nav>
-                <h2>Home</h2>
-                <h2>Me</h2>
-                <h2>My Works</h2>
-            </nav>
+    <header class= "header">
+        <div class=" header__logo-bloc">
+            <img src="../img/logo test.png" alt="logo" class="logo-bloc__logo">
+            <h1 class= "logo-bloc__name">Tanguy</h1>
+            <h2 class="logo-bloc__title">Futur web developper</h2>
+        </div>          
+        <nav class=" header__nav">
+            <a href="#" id = "home" class="nav__button nav__button--animationDelay0">Home</a>
+            <a href="#" id ="me" class="nav__button nav__button--animationDelay1">Me</a>
+            <a href="#" id = "works" class="nav__button nav__button--animationDelay2">My Works</a>
+        </nav>
+    </header>
+    <main class="main-container">
+        <section class ="main-container__home-page">
+            <div class="main__title-container">
+                <h3 class="main__title">Hello there,</h3>
+                <h3 class="main__title">I'm <strong> Tanguy</strong></h3>         
+            </div>
+            <div class= "cadre-photo">
+                <p class="main-container__paragraph">Welcome to my World</p>
+                <img src="../img/moi détourré.png" alt="photo de moi" class="main__photo">
+            </div>
+        </section>
+         <section class="main-container__me-page">
+            <p class="me-page__paragraph me-page__paragraph--1 hidden"> <strong>JavaScript</strong></p>
+            <p class="me-page__paragraph me-page__paragraph--2 hidden">Full Stack Developper</p>
+            <ul class = "me-page__techno-list ">
+                    <li class = "techno-list__item hidden">HTML</li>
+                    <li class = "techno-list__item hidden">CSS</li>
+                    <li class = "techno-list__item hidden">JavaScript</li>
+                    <li class = "techno-list__item hidden">Node.js</li>
+                   
+                </ul>
+
+            <p class= "me-page__paragraph3"></p>
+        </section>
+
+
+     </main>
+
+
+        <footer class="footer">
             
 
-        </header>
-        
-
-        <main>
-                <h2>Hello there</h2>
-                <img src="#" alt="img de moi en transparance trop classe">
-                <div>
-                   <h4> Moi c'est Tanguy suis un dev web de folie </h4>
-                </div>
-
-                <div>
-                   <p>Applications / Jeux</p>  
-
-                </div>
-
-                
-        </main>
-
-
-        <footer>
-                <p> Tout droit réservé à ma propre convenance.</p>
-
         </footer>
-
+<script src="../app.js"></script>
 </body>
 </html>
