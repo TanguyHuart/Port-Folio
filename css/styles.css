@@ -17,6 +17,7 @@ body {
     flex-direction: row-reverse;
     color: var(--main-white-color);
     width: 100vw;
+    min-height: 100%;
     
 }
 
@@ -27,7 +28,7 @@ body {
     position: fixed;
     top: 0%;
     left: 0%;
-    height: 100vh;
+    min-height: 100%;
  
     display: flex;
     flex-direction: column;
@@ -203,7 +204,7 @@ strong {
 }
 
 .main-container__me-page{
-    margin: 10px 10vw ;
+    margin: 10px 10vw 10px 15vw ;
 }
 
 .me-page__paragraph{
@@ -247,15 +248,13 @@ strong {
 	}
 }
 
-.me-page__language-list{
-    font-size: 3rem;
-    margin-top: 5vh;
-    margin-left: 10vh;
-}
-
 .me-page__techno-list{
     width: 30vw;
+    font-size: 3rem;
+    margin-top: 5vh;
+    
 }
+
 .techno-list__item{
     font-size: 2rem;
     animation: myAnim 0.3s ease-in 0s 1 normal forwards;

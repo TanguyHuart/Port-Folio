@@ -1,9 +1,10 @@
 const app = {
 
     navButton : document.querySelectorAll('.nav__button'),
+    headerNav : document.querySelector('.header__nav'),
     homeButton : document.getElementById('home'),
     meButton : document.getElementById('me'),
-    worksButon : document.getElementById('works'),
+    worksButton : document.getElementById('works'),
     mePageParagraph : document.querySelectorAll('.me-page__paragraph'),
     mePageList : document.querySelectorAll('.techno-list__item'),
 
@@ -28,15 +29,58 @@ const app = {
    },
 
 /**
- * Fonction evenement sur le click de home, ramène en haut de la page
+ * Fonction evenement sur le click des bouton, ramène scroll la page en fonction du nombre en parametre
  */
-   handleScrollPageTop : () =>{
-    window.scrollY = 0;
+   handleScrollPage : (event) =>{
+   
+    switch(event.target){
+      case app.homeButton:
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+        
+      case app.meButton:
+        window.scroll({
+          top: 400,
+          left: 0,
+          behavior: "smooth",
+        });
+       
+        break;
+
+      case app.worksButton:
+        window.scroll({
+          top: 800,
+          left: 0,
+          behavior: "smooth",
+        });
+        
+        break;
+
+      default:
+        break;
+    };
+  },
+
+   /**
+    * Fonction evenement sur le scroll de la page , enlve la classe hidden avec un timeout au deux paragraphe pour décaller leur animation d'entrée
+    */
+
+   handleRemoveHidden : () => {
+    if (window.scrollY >= 400 && app.meParagraphIsVisible ===false){
+      app.RemoveHiddenParagraph();
+      setTimeout(() => {
+        app.RemoveHiddenTechnoList();
+      },1250)
+    }
    },
 
-   handleRemoveHiddenParagraph : () => {
+   RemoveHiddenParagraph : () => {
     
-    if (window.scrollY > 200 && app.meParagraphIsVisible ===false){
+    if (window.scrollY >= 400 && app.meParagraphIsVisible ===false){
       app.mePageParagraph[0].classList.remove('hidden');
       setTimeout(() => {     
           app.mePageParagraph[1].classList.remove('hidden');        
@@ -45,22 +89,16 @@ const app = {
     }
    },  
 
-   handleRemoveHiddenTechnoList : () => { 
-    if (window.scrollY > 400 && app.meListIsVisible === false){
+   RemoveHiddenTechnoList : () => { 
+    if (window.scrollY >= 400 && app.meListIsVisible === false){
       
-      let i = 0
-        setInterval(() => {
-          
+      for (let i = 0; i< app.mePageList.length; i++){
+        setTimeout(() =>{
           app.mePageList[i].classList.remove('hidden');
-          i++
-          if (i === app.mePageList.length){
-            clearInterval();
-            app.meListIsVisible = true;
-          }
-        }, 500);
-      }
-        
-        
+        },500*i);
+      };
+      app.meListIsVisible = true;  
+      }    
     },
   
   
@@ -68,9 +106,9 @@ const app = {
 
     init : () => {
       app.deleteTransition();
-      app.homeButton.addEventListener('click', app.handleScrollPageTop);
-      window.addEventListener('scroll', app.handleRemoveHiddenParagraph);
-      window.addEventListener('scroll', app.handleRemoveHiddenTechnoList);
+      app.headerNav.addEventListener('click', app.handleScrollPage);
+      window.addEventListener('scroll', app.handleRemoveHidden);
+      // window.addEventListener('scroll', app.handleRemoveHiddenTechnoList);
     },
     
 
